@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Examples</title>
+    <script src="arrays.js"></script>
+</head>
+<body>
+    <h1> Javascript Tahtası</h1>
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <button onclick="names.forEach(printConsole);">ForEach</button>
+    <button onclick="document.getElementById('p1').innerHTML = names">Access the full array</button>
+    <button onclick="document.getElementById('p2').innerHTML = names.join('*')">arr.join('symbol')</button>
+    <button onclick="delete names[1]; ">delete arr[index]</button>
+    <button onclick="console.log(names.splice(1,1,'Uğur','Mert'));">splice(where,delete number, what...)</button>
+    <button onclick="var PC = computer.concat(io,hardware);
+    document.getElementById('p2').innerHTML = PC.toString(); ">arr1.concat(arr2,arr3)</button>
+    <button onclick="document.getElementById('p1').innerHTML = fruits.slice(2,4);">slice(2,4)</button>
+    <button onclick="document.getElementById('p1').innerHTML = numbers;var numbers2 = numbers.map(multiplyBy2);
+    document.getElementById('p2').innerHTML = numbers2;">map(func) multiply by 2</button>
+    <button onclick="document.getElementById('p1').innerHTML = numbers;var numbers2 = numbers.filter(overThan18);
+    document.getElementById('p2').innerHTML = numbers2;">filter(func) over than 18</button>
+    <button onclick="document.getElementById('p1').innerHTML = numbers;var sum = numbers.reduce(summation);
+    document.getElementById('p2').innerHTML = sum;">reduce(func)</button>
+    <button onclick="document.getElementById('p1').innerHTML = numbers;var sum = numbers.reduce(summation,100);
+    document.getElementById('p2').innerHTML = sum;">reduce(func,100) with initial value</button>
+    <button onclick="document.getElementById('p1').innerHTML = numbers;var numbers2 = numbers.every(overThan18);
+    document.getElementById('p2').innerHTML = numbers2;">every(func) check are all greater than 18</button>
+    <button onclick="document.getElementById('p1').innerHTML = numbers;var numbers2 = numbers.some(overThan18);
+    document.getElementById('p2').innerHTML = numbers2;">some(func) check are some greater than 18</button>
+    <button onclick="document.getElementById('p1').innerHTML = numbers;var numbers2 = numbers.find(overThan18);
+    document.getElementById('p2').innerHTML = numbers2;">find(func) find first greater than 18</button>
+
+    <p>pop(): kicks last element</p>
+    <p>shift(): kicks firs element</p>
+    <p>push(): adds last element</p>
+    <p>unshift(): adds firs element</p>
+    <h5>Splice</h5>
+    <p>The first parameter (2) defines the position where new elements should be added (spliced in).</p>
+    <p>The second parameter (0) defines how many elements should be removed</p>
+    <script>        
+        
+    </script>
+</body>
+</html>
