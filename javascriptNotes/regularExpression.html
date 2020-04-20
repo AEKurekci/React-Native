@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regular Expression</title>
+</head>
+<body>
+    <h1>Regular Expression Tahtası</h1>
+    <p id="p1"></p>
+    <button onclick="document.getElementById('p1').innerHTML = sampleText;">Print</button>
+    <button onclick="var allJavaScripts = sampleText.search('JavaScript'); 
+    document.getElementById('p1').innerHTML = allJavaScripts;">search index number of JavaScript</button>
+    
+    <button onclick="var allJavaScripts = sampleText.search(/JavaScript/i);
+    document.getElementById('p1').innerHTML = allJavaScripts;">search index number of JavaScript //i</button>
+    
+    <button onclick="var changeToHTML = sampleText.replace(/javascript/ig, 'HTML');
+    document.getElementById('p1').innerHTML = changeToHTML;">replace //ig</button>
+
+    <button onclick="var testResult = /ava/.test(sampleText);
+    document.getElementById('p1').innerHTML = testResult;">test weather 'ava' is exist in it or not /ava/</button>
+    <script>
+        var sampleText="Merhaba ben JavaScript öğreniyorum. Javascript öğrenmeyi sevdim. JavaScript öğrenmek çok keyifli. \
+        Javascriptte regular expressiondayım.";
+        
+
+    </script>
+</body>
+</html>
