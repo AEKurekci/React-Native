@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Example</title>
+    <script src="classExamples.js"></script>
+</head>
+<body>
+    <p id="p1"></p>
+    <button onclick="p1.innerHTML = myCar.present();">present car</button>
+    <button onclick="p1.innerHTML = myCarModel.show();">show car (extends)</button>
+    <button onclick="p1.innerHTML = myCar.priceOf;">get price</button>
+    <script>
+        var myCar = new Car("Ford", 50000);
+        myCar.cName = "Volvo";
+        var myCarModel = new Model("Ford", 50000, "Mustang");
+        //accessing Html DOM is a cost, access it once and use again.
+        var p1 = document.getElementById('p1');
+    </script>
+</body>
+</html>
