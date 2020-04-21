@@ -11,12 +11,28 @@
     <button onclick="p1.innerHTML = myCar.present();">present car</button>
     <button onclick="p1.innerHTML = myCarModel.show();">show car (extends)</button>
     <button onclick="p1.innerHTML = myCar.priceOf;">get price</button>
+    <br>
+    <Form>
+        <label for="kelimeInput">Anlam:</label>
+        <input type="text" id="kelimeInput">
+    </Form>
+    <button onclick="words.anlamEkle(document.getElementById('kelimeInput').value);
+        document.getElementById('p1').innerHTML = words.anlam;
+        console.log(words.anlam)">Anlam Ekle</button>
+    <button onclick="document.getElementById('p1').innerHTML = words;">Tüm sözlüğü listele</button>
+    
     <script>
         var myCar = new Car("Ford", 50000);
         myCar.cName = "Volvo";
         var myCarModel = new Model("Ford", 50000, "Mustang");
         //accessing Html DOM is a cost, access it once and use again.
         var p1 = document.getElementById('p1');
+
+        var means = ["hold","keep","engage","play","hire on","jell","detain","intercept"];
+        var sentence = ["cümle","cümle2","cümle3"];
+        var word="tutmak";
+        var words = new translateTrEn(word, means, sentence);
+
     </script>
 </body>
 </html>

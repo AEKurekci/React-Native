@@ -35,3 +35,26 @@ class Model extends Car{
         return this.present() + ", it is " + this.model + " and price is " + this.price;
     }
 }
+
+class translateTrEn{
+    constructor(tr,en,cumle){
+        this.tr= tr;
+        this.en = en;
+        this.cumleler = cumle;
+    }
+    anlamEkle(anlam){
+        this.en.push(anlam);
+    }
+    cumleEkle(cumle){
+        this.cumleler.push(cumle)
+    }
+    get anlam(){
+        return this.en;
+    }
+    get sentence(){
+        return this.cumleler;
+    }
+    get word(){
+        return this.tr;
+    }
+}
