@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow</title>
+</head>
+<body>
+    <h1>Arrow Functions</h1>
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <button onclick="document.getElementById('p1').innerHTML = helloS1;
+    document.getElementById('p2').innerHTML = helloS1();">Hello Style 1</button>
+
+    <button onclick="document.getElementById('p1').innerHTML = helloS2;
+    document.getElementById('p2').innerHTML = helloS2();">Hello Style 2</button>
+
+    <button onclick="document.getElementById('p1').innerHTML = helloS3;
+    document.getElementById('p2').innerHTML = helloS3();">Hello Style 3</button>
+    
+    <button onclick="document.getElementById('p1').innerHTML = helloS4;
+    document.getElementById('p2').innerHTML = helloS4('Ali');">Hello Style 4</button>
+
+    <button onclick="document.getElementById('p1').innerHTML = helloS5;
+    document.getElementById('p2').innerHTML = helloS5('Ali');">Hello Style 5</button>
+    <h3>"this" with arrow functions</h3>
+    <p>"this" means owner of arrow function that is used the "this" in</p>
+    <p id="p3"></p>
+    <p id="p4"></p>
+    <button id="btn1">Call the regular hello()</button>
+    <button id="btn2">Call the arrow hello()</button>
+    <script>
+
+        helloS1 = function(){
+            return "Hello World";
+        }
+
+        helloS2 = () =>{
+            return "Hello World";
+        }
+
+        helloS3 = () => "Hello World";
+
+        helloS4 =(name) => "Hello " + name;
+
+        helloS5 = name => "Hello " + name;
+
+        var helloS6,helloS7;
+        helloS6 = function(){
+            document.getElementById('p3').innerHTML += this;
+        }
+
+        helloS7 = () => {
+            return document.getElementById('p4').innerHTML += this;
+        }
+
+        //when page is loaded  call hello function
+        window.addEventListener("load",helloS6);
+        window.addEventListener("load",helloS7);
+        //button calls the hello function
+        document.getElementById("btn2").addEventListener("click", helloS7);
+        document.getElementById("btn1").addEventListener("click", helloS6);
+    </script>
+</body>
+</html>
