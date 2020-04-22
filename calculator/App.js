@@ -21,35 +21,62 @@ export default class App extends Component{
   constructor(){
     super()
     this.state = {
-      resultText:""
+      calculationText:"",
+      resultText : ""
     }
-    
+    this.operations = ['DEL','+', '-', '*','/'];
   }
-
-operate(operation){
-  switch(operation){
-    case 'Del':
-      let text = this.state.resultText.split('')
-      text.pop()
-      this.setState({
-        resultText : text.join('')
-      })
-  }
-}
-
   calculateResult(){
-    const text = this.state.resultText
+    const text = this.state.calculationText
+    this.setState({
+      resultText : eval(text)
+    })
+  }
+  operate(operation){
+    switch(operation){
+      case 'DEL':
+        let text = this.state.calculationText.split('');
+        text.pop();
+        this.setState({
+          calculationText : text.join('')
+        })
+        break
+      case '+':
+      case '-':
+      case '*':
+      case '/':
+        const lastChar = this.state.calculationText.split('').pop();
+        if(this.operations.indexOf(lastChar) > 0) return//art arda operatör girdisini önler
+        if(this.state.calculationText == "") return//calculation text boş olduğunda operatöre basılmasını önler
+        this.setState({
+          calculationText : this.state.calculationText + operation
+        })
+    }
+  }
+
+  validate(){
+    const text = this.state.calculationText;
+    console.log(text.slice(-1));
+    
+    switch(text.slice(-1)){
+      case '+':
+      case '-':
+      case '*':
+      case '/':
+        return false;
+    }
+    return true;
   }
 
   buttonPressed(text){
 
-  if(text == '='){
-    return this.calculateResult();
-  }
-
+    if(text == '='){
+      return this.validate() && this.calculateResult();
+    }
     this.setState({
-      resultText:this.state.resultText + text
-    })
+        calculationText: this.state.calculationText + text
+      })
+    
   }
 
   render(){
@@ -59,20 +86,20 @@ operate(operation){
       let col = []
       for(let j= 0;j < 3; j++){
         col.push(
-          <TouchableOpacity onPress={() => this.buttonPressed(nums[i][j])} style={styles.btn}>
+          <TouchableOpacity key={nums[i][j]} onPress={() => this.buttonPressed(nums[i][j])} style={styles.btn}>
             <Text style={styles.btnText}>{nums[i][j]}</Text>
           </TouchableOpacity>
         )
       }
-      rows.push(<View style={styles.row}>{col}</View>)
+      rows.push(<View key={i} style={styles.row}>{col}</View>)
     }
 
-    let operation = ['Del','+', '-', 'x','/']
+   
     let ops = []
-    for(let i = 0; i<operation.length;i++){
+    for(let i = 0; i<this.operations.length;i++){
       ops.push(
-        <TouchableOpacity style={styles.btn} onPress={() => this.operate(operation[i])}>
-            <Text style={styles.btnText}>{operation[i]}</Text>
+        <TouchableOpacity key={this.operations[i]} style={styles.btn} onPress={() => this.operate(this.operations[i])}>
+            <Text style={styles.btnText}>{this.operations[i]}</Text>
           </TouchableOpacity>
       )
     }
@@ -80,10 +107,10 @@ operate(operation){
     return(
       <View style={styles.container}>
         <View style={styles.entry}>
-          <Text style={styles.entryText}>{this.state.resultText}</Text>
+          <Text style={styles.entryText}>{this.state.calculationText}</Text>
         </View>
         <View style={styles.result}>
-          <Text style={styles.resultText}>1232</Text>
+          <Text style={styles.resultText}>{this.state.resultText}</Text>
         </View>
         <View style={styles.buttons}>
           <View style={styles.numbers}>
